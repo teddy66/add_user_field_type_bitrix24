@@ -19,7 +19,7 @@ $arResult['FIELD_ID'] = isset($_REQUEST['field_id']) ? $_REQUEST['field_id']: $a
 
 global $USER_FIELD_MANAGER;
 
-$CCrmFields = new CCrmFields($USER_FIELD_MANAGER, $arResult['ENTITY_ID']);
+$CCrmFields = new CCrmFieldsMy($USER_FIELD_MANAGER, $arResult['ENTITY_ID']);
 if ($CCrmFields->CheckError())
 {
 	$ex = $APPLICATION->GetException();
@@ -283,6 +283,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && check_bitrix_sessid())
 			break;
 
 			case 'c_ibel':
+				$arField['SETTINGS']['IB_IBLOCK_SORT'] = $_POST['IB_IBLOCK_SORT'];
 			case 'iblock_element':
 				$arField['SETTINGS']['IBLOCK_TYPE_ID'] = $_POST['IB_IBLOCK_TYPE_ID'];
 				$arField['SETTINGS']['IBLOCK_ID'] = $_POST['IB_IBLOCK_ID'];
